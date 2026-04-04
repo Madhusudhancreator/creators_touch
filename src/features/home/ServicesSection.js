@@ -12,46 +12,46 @@ const services = [
   {
     number: "01",
     title: "Strategy",
-    tag: "Brand & Business",
+    tag: "Business Planning",
     description:
-      "Data-driven strategies that align your brand vision with market opportunities — a clear roadmap to measurable, sustainable growth.",
-    bullets: ["Market Research", "Competitive Analysis", "Growth Roadmap"],
+      "We help you make the right plan for your brand and business growth.",
+    bullets: ["Research", "Competitor Check", "Growth Plan"],
     accent: PINK,
   },
   {
     number: "02",
     title: "Branding",
-    tag: "Identity & Voice",
+    tag: "Brand Identity",
     description:
-      "Cohesive brand systems — from visual identity to tone of voice — that resonate deeply and stand the test of time.",
-    bullets: ["Logo & Identity", "Brand Guidelines", "Tone of Voice"],
+      "We create a brand look and style that makes your business stand out.",
+    bullets: ["Logo", "Brand Style", "Brand Voice"],
     accent: BLUE,
   },
   {
     number: "03",
     title: "Content",
-    tag: "Editorial & Visual",
+    tag: "Words & Design",
     description:
-      "Compelling content that tells your story and drives meaningful action across every platform and touchpoint.",
-    bullets: ["Copywriting", "Art Direction", "Motion Graphics"],
+      "We create clear and engaging content for your brand.",
+    bullets: ["Writing", "Visual Design", "Motion Graphics"],
     accent: PINK,
   },
   {
     number: "04",
-    title: "UI / UX",
-    tag: "Design & Research",
+    title: "Website Design",
+    tag: "Easy User Experience",
     description:
-      "Beautiful, intuitive interfaces that merge aesthetic excellence with seamless experience — obsessive attention to detail.",
-    bullets: ["UI Design", "UX Research", "Prototyping"],
+      "We design websites and apps that look great and are easy to use.",
+    bullets: ["Design", "User Research", "Prototype"],
     accent: BLUE,
   },
   {
     number: "05",
     title: "Development",
-    tag: "Engineering & Tech",
+    tag: "Website Building",
     description:
-      "Modern, performant digital solutions engineered for scale — built with the tools that power the best products on the web.",
-    bullets: ["Next.js / React", "CMS Integration", "Performance"],
+      "We build modern websites that are fast, smooth, and reliable.",
+    bullets: ["Frontend", "CMS Setup", "Performance"],
     accent: PINK,
   },
 ];

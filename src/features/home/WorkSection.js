@@ -249,7 +249,7 @@ export default function WorkSection() {
           className="font-extrabold tracking-tight text-center leading-[0.9]"
           style={{ fontSize: "clamp(3rem, 9vw, 7rem)" }}
         >
-          Crafted for<br />every work.
+          Brands we’ve<br />worked with
         </h2>
       </div>
 
@@ -276,7 +276,7 @@ export default function WorkSection() {
       ))}
 
       {/* ── Falling phones (z-index 4 — on top of everything) ── */}
-      {PHONES.map((p, i) => (
+      {/* {PHONES.map((p, i) => (
         <div
           key={i}
           style={{
@@ -312,7 +312,7 @@ export default function WorkSection() {
             </span>
           </div>
         </div>
-      ))}
+      ))} */}
     </section>
   );
 }

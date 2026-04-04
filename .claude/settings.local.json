@@ -12,7 +12,9 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:deepwiki.com)",
-      "WebFetch(domain:www.reactbits.dev)"
+      "WebFetch(domain:www.reactbits.dev)",
+      "Bash(cd \"D:/creative_touch/creatves/frontend\" && node -e \"const l = require\\('lucide-react'\\); console.log\\(['MapPin','Globe','Mail','ArrowRight','Linkedin','Instagram','Facebook','PlayCircle'].map\\(i => i + ': ' + \\(l[i] ? 'OK' : 'MISSING'\\)\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(cd \"D:/creative_touch/creatves/frontend\" && node -e \"const l = require\\('lucide-react'\\); const keys = Object.keys\\(l\\).filter\\(k => /social|link|share|twitter|git|extern/i.test\\(k\\)\\); console.log\\(keys.join\\('\\\\n'\\)\\)\")"
     ]
   }
 }

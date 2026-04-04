@@ -312,39 +312,7 @@ export default function IndustriesSection() {
               Industries
             </h2>
 
-            {/* Tag panel — opacity + translateY (no maxWidth) */}
-            <div
-              style={{
-                opacity:    panelIn ? 1 : 0,
-                transform:  panelIn ? "translateY(0)" : "translateY(10px)",
-                transition: "opacity 0.35s ease, transform 0.35s ease",
-                minWidth:   260,
-                pointerEvents: panelIn ? "auto" : "none",
-              }}
-            >
-              {current && (
-                <>
-                  <p className="text-white font-semibold text-sm mb-3 leading-snug">
-                    {current.title}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {current.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[11px] font-medium px-3 py-1 rounded-full"
-                        style={{
-                          backgroundColor: "rgba(204,0,102,0.16)",
-                          border:          "1px solid rgba(204,0,102,0.32)",
-                          color:           "#fda4af",
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
+
           </div>
         </div>
 

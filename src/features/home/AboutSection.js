@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const words = ["We're Global UI UX", "Design Agency"];
+const words = ["We create beautiful", "websites worldwide"];
 
 function useInView(ref) {
   const [inView, setInView] = useState(false);
@@ -33,9 +33,9 @@ export default function AboutSection() {
           className="text-sm sm:text-base font-bold leading-snug"
           style={{ color: "var(--brand-pink)", animation: "blink 2.4s ease-in-out infinite" }}
         >
-          We&apos;re global UI UX Design Agency
+          We make websites simple, 
           <br />
-          curating experience That with us
+          smart, and attractive.
         </p>
       </div>
 
@@ -66,9 +66,7 @@ export default function AboutSection() {
             transitionDelay: "550ms",
           }}
         >
-          Curating experiences that move people — from strategy and brand
-          identity to pixel-perfect interfaces, we shape how the world sees
-          your brand.
+          We help your brand look better and connect with people.
         </p>
       </div>
 
@@ -94,7 +92,7 @@ export default function AboutSection() {
 
         <div>
           <p className="text-2xl sm:text-3xl font-extrabold tracking-tight" style={{ color: "var(--brand-navy-dark)" }}>
-            10,000<span style={{ color: "var(--brand-pink)" }}>+</span>
+            1000<span style={{ color: "var(--brand-pink)" }}>+</span>
           </p>
           <p className="text-xs uppercase tracking-[0.25em] text-gray-400 mt-1">
             Clients worldwide

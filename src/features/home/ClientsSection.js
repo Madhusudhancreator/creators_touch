@@ -1,10 +1,12 @@
 import Image from "next/image";
 
 const clients = [
-  { name: "Cream Stone",        src: "/assets/clients/cream_stone.png"       },
-  { name: "Suzuki",             src: "/assets/clients/suzuki.png"             },
-  { name: "Reliance",           src: "/assets/clients/reliance.png"           },
-  { name: "Radha Madhav Toyota",src: "/assets/clients/radha_madhav_toyota.png"},
+  { name: "Cream Stone",              src: "/assets/clients/cream_stone.png"               },
+  { name: "Reliance",                 src: "/assets/clients/reliance.png"                  },
+  { name: "KL University",            src: "/assets/clients/kl_university.png"             },
+  { name: "The Gateway Hotels",       src: "/assets/clients/the_gateway_hotels_resorts.png"},
+  { name: "Trendset Mall",            src: "/assets/clients/trendset_mall.png"             },
+  { name: "MVR Mall",                 src: "/assets/clients/mvr_mall.png"                  },
 ];
 
 export default function ClientsSection() {
@@ -19,7 +21,7 @@ export default function ClientsSection() {
       </div>
 
       {/* Logos grid */}
-      <div className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10 items-center justify-items-center">
+      <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 items-center justify-items-center">
         {clients.map(({ name, src }) => (
           <div
             key={name}
