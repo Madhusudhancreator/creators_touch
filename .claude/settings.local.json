@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd D:/creative_touch/creatves/frontend && node -e \"require\\('next'\\); console.log\\('next OK'\\)\" 2>&1)",
+      "Bash(cd D:/creative_touch/creatves/frontend && node -e \"require\\('tailwindcss'\\); console.log\\('tailwind OK'\\)\" 2>&1 && node -e \"require\\('lucide-react'\\); console.log\\('lucide OK'\\)\" 2>&1)",
+      "Bash(cd D:/creative_touch/creatves/frontend && node -e \"require\\('@tailwindcss/postcss'\\); console.log\\('tailwind postcss OK'\\)\" 2>&1)",
+      "Bash(cd D:/creative_touch/creatves/frontend && node -e \"require\\('radix-ui'\\); console.log\\('radix OK'\\)\" 2>&1)",
+      "Bash(cd D:/creative_touch/creatves/frontend && npm install framer-motion)",
+      "Bash(mkdir -p \"D:\\\\creative_touch\\\\creatves\\\\frontend\\\\public\\\\assets\\\\images\" && cp \"D:\\\\creative_touch\\\\creatves\\\\frontend\\\\assets\\\\banner.jpeg\" \"D:\\\\creative_touch\\\\creatves\\\\frontend\\\\public\\\\assets\\\\images\\\\banner.jpeg\")",
+      "Bash(cd D:/creative_touch/creatves/frontend/assets/clients && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 02_52_17 PM.png\" \"rolex_media_tech.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 02_54_19 PM.png\" \"client_construction.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 02_56_48 PM.png\" \"kl_university.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 02_59_17 PM.png\" \"mohammed_khan_sons_jewellers.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_04_16 PM.png\" \"lepl.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_06_38 PM.png\" \"radha_madhav_toyota.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_08_18 PM.png\" \"suzuki.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_10_42 PM.png\" \"mvr_mall.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_13_28 PM.png\" \"reliance.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_15_48 PM.png\" \"apcrda.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_18_46 PM.png\" \"convention_centre.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_23_02 PM.png\" \"cherrys.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_27_59 PM.png\" \"the_gateway_hotels_resorts.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_30_16 PM.png\" \"durga_ghee.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_32_38 PM.png\" \"acharya_nagarjuna_university.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_35_21 PM.png\" \"krishna_university.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_37_17 PM.png\" \"trendset_mall.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_39_12 PM.png\" \"reliance_2.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_41_29 PM.png\" \"indian_national_congress.png\" && \\\\\nmv \"ChatGPT Image Mar 31, 2026, 03_59_30 PM.png\" \"cream_stone.png\" && \\\\\nmv \"Gemini_Generated_Image_13v32m13v32m13v3.png\" \"ysrcp.png\" && \\\\\nls)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:deepwiki.com)",
+      "WebFetch(domain:www.reactbits.dev)"
+    ]
+  }
+}
