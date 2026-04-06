@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { MapPin, Phone, Mail, Clock, Send, ArrowRight } from "lucide-react";
 
@@ -66,7 +66,7 @@ export default function ContactPage() {
     <main className="bg-white min-h-screen">
 
       {/* ── Hero ── */}
-      <section className="pt-20 pb-16 px-4 text-center" style={{ backgroundColor: "#0d1b2e" }}>
+      <section className="pt-24 pb-16 px-4 text-center" style={{ backgroundColor: "#0d1b2e" }}>
         <p className="text-xs uppercase tracking-[0.35em] font-semibold mb-3" style={{ color: "#0977a8" }}>
           Contact Us
         </p>
@@ -136,7 +136,6 @@ export default function ContactPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-              {/* Name + Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-semibold text-gray-500 uppercase tracking-widest">Full Name *</label>
@@ -156,7 +155,6 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Email */}
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-semibold text-gray-500 uppercase tracking-widest">Email *</label>
                 <input
@@ -166,7 +164,6 @@ export default function ContactPage() {
                 />
               </div>
 
-              {/* Service + Budget */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-semibold text-gray-500 uppercase tracking-widest">Service Needed</label>
@@ -194,7 +191,6 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Message */}
               <div className="flex flex-col gap-1.5">
                 <label className="text-xs font-semibold text-gray-500 uppercase tracking-widest">Message *</label>
                 <textarea
@@ -215,10 +211,8 @@ export default function ContactPage() {
           )}
         </div>
 
-        {/* Right — Map + info */}
+        {/* Right — Map + Quick links */}
         <div className="flex flex-col gap-6">
-
-          {/* Google Map embed */}
           <div className="rounded-3xl overflow-hidden border border-gray-100 shadow-sm flex-1 min-h-[300px]">
             <iframe
               title="Creators Touch Location"
@@ -232,14 +226,13 @@ export default function ContactPage() {
             />
           </div>
 
-          {/* Quick links */}
           <div className="rounded-3xl border border-gray-100 shadow-sm p-6 bg-white">
             <p className="text-xs uppercase tracking-widest font-semibold text-gray-400 mb-4">Quick Links</p>
             <div className="grid grid-cols-2 gap-3">
               {["Our Work", "Services", "About Us", "Blog"].map((item) => (
                 <Link
                   key={item}
-                  href={`/${item.toLowerCase().replace(" ", "-")}`}
+                  href={`/${item.toLowerCase().replace(/ /g, "-")}`}
                   className="flex items-center gap-2 text-sm font-medium text-[#0d1b2e] hover:text-[#0977a8] transition-colors group"
                 >
                   <ArrowRight size={13} className="text-[#0977a8] opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -250,23 +243,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* ── CTA Banner ── */}
-      <div className="py-16 px-4 text-center" style={{ backgroundColor: "#e0f4fb" }}>
-        <h2 className="text-2xl sm:text-4xl font-bold text-[#0d1b2e]">
-          We Treat Our Clients Like Partners
-        </h2>
-        <p className="mt-3 text-[#0d1b2e]/60 max-w-md mx-auto text-base">
-          Let&apos;s find out if we&apos;re the right fit for each other.
-        </p>
-        <a
-          href="tel:+919876543210"
-          className="inline-flex items-center gap-2 mt-7 text-sm font-bold text-white px-8 py-3.5 rounded-full transition-opacity hover:opacity-90"
-          style={{ backgroundColor: "#0977a8" }}
-        >
-          Call Us Now <ArrowRight size={16} />
-        </a>
-      </div>
 
     </main>
   );

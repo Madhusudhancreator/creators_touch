@@ -14,7 +14,14 @@
       "WebFetch(domain:deepwiki.com)",
       "WebFetch(domain:www.reactbits.dev)",
       "Bash(cd \"D:/creative_touch/creatves/frontend\" && node -e \"const l = require\\('lucide-react'\\); console.log\\(['MapPin','Globe','Mail','ArrowRight','Linkedin','Instagram','Facebook','PlayCircle'].map\\(i => i + ': ' + \\(l[i] ? 'OK' : 'MISSING'\\)\\).join\\('\\\\n'\\)\\)\")",
-      "Bash(cd \"D:/creative_touch/creatves/frontend\" && node -e \"const l = require\\('lucide-react'\\); const keys = Object.keys\\(l\\).filter\\(k => /social|link|share|twitter|git|extern/i.test\\(k\\)\\); console.log\\(keys.join\\('\\\\n'\\)\\)\")"
+      "Bash(cd \"D:/creative_touch/creatves/frontend\" && node -e \"const l = require\\('lucide-react'\\); const keys = Object.keys\\(l\\).filter\\(k => /social|link|share|twitter|git|extern/i.test\\(k\\)\\); console.log\\(keys.join\\('\\\\n'\\)\\)\")",
+      "Bash(find /d/creative_touch/creatves/frontend/src/features/home -type f -name \"*.js\" 2>/dev/null | head -20)",
+      "mcp__ide__getDiagnostics",
+      "Bash(cd \"D:\\\\creative_touch\\\\creatves\\\\frontend\" && npm run build 2>&1 | tail -50)",
+      "Bash(cd \"D:\\\\creative_touch\\\\creatves\\\\frontend\" && npm run build 2>&1 | tail -30)",
+      "Bash(curl -s http://localhost:3001/blog 2>&1 | head -20)",
+      "Bash(cd \"D:\\\\creative_touch\\\\creatves\\\\frontend\" && npm run build 2>&1 | tail -25)",
+      "Bash(cd \"D:\\\\creative_touch\\\\creatves\\\\frontend\" && npm run build 2>&1 | tail -20)"
     ]
   }
 }

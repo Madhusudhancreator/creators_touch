@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
@@ -15,7 +16,14 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled]  = useState(false);
+  const pathname = usePathname();
+  const isHome   = pathname === "/";
+
+  // On inner pages the navbar always behaves as if scrolled
+  // so links are dark and visible over white backgrounds.
+  // On the homepage the original scroll-driven behaviour is kept.
+  const active = isHome ? scrolled : true;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -26,7 +34,7 @@ export default function Navbar() {
   return (
     <header
       className={`w-full sticky top-0 z-50 transition-all duration-500 ${
-        scrolled ? "bg-[#e0f4fb] shadow-md" : "bg-transparent"
+        active ? "bg-[#e0f4fb] shadow-md" : "bg-transparent"
       }`}
     >
       {/* Top row: Logo | center slot | Contact */}
@@ -44,12 +52,12 @@ export default function Navbar() {
         {/* Center slot — title fades up, nav links fade in */}
         <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
 
-          {/* Brand title: visible at top, slides up + fades on scroll */}
+          {/* Brand title: visible at top on home, slides up + fades on scroll */}
           <Link
             href="/"
-            aria-hidden={scrolled}
+            aria-hidden={active}
             className={`absolute hidden md:block lg:block xl: whitespace-nowrap text-xl md:text-2xl font-extrabold tracking-[0.2em] uppercase transition-all duration-500 ${
-              scrolled
+              active
                 ? "opacity-0 -translate-y-6 pointer-events-none"
                 : "opacity-100 translate-y-0 text-white"
             }`}
@@ -57,10 +65,10 @@ export default function Navbar() {
             Creators Touch
           </Link>
 
-          {/* Nav links: hidden at top, slides up + fades in on scroll */}
+          {/* Nav links: hidden at top on home, always visible on inner pages */}
           <ul
             className={`hidden md:flex items-center gap-1 rounded-full px-3 py-1 transition-all duration-500 ${
-              scrolled
+              active
                 ? "opacity-100 translate-y-0 bg-white/60"
                 : "opacity-0 translate-y-6 pointer-events-none bg-transparent"
             }`}
@@ -83,7 +91,7 @@ export default function Navbar() {
           <Link
             href="/contact"
             className={`text-sm font-semibold px-5 py-2 rounded-lg border transition-all duration-300 ${
-              scrolled
+              active
                 ? "border-[#0977a8] text-[#0977a8] hover:bg-[#0977a8] hover:text-white"
                 : "border-white/50 text-white hover:bg-white/10"
             }`}
@@ -99,17 +107,17 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           {menuOpen ? (
-            <X size={20} className={scrolled ? "text-[#0d1b2e]" : "text-white"} />
+            <X size={20} className={active ? "text-[#0d1b2e]" : "text-white"} />
           ) : (
-            <Menu size={20} className={scrolled ? "text-[#0d1b2e]" : "text-white"} />
+            <Menu size={20} className={active ? "text-[#0d1b2e]" : "text-white"} />
           )}
         </button>
       </div>
 
-      {/* Bottom row: Nav links pills — collapses upward on scroll */}
+      {/* Bottom row: Nav links pills — only shown on home when not scrolled */}
       <div
         className={`hidden md:block overflow-hidden transition-all duration-500 ${
-          scrolled ? "max-h-0 opacity-0 pb-0" : "max-h-16 opacity-100 pb-3"
+          active ? "max-h-0 opacity-0 pb-0" : "max-h-16 opacity-100 pb-3"
         }`}
       >
         <ul className="flex items-center justify-center gap-1 rounded-full px-3 py-1 w-fit mx-auto bg-white/10 backdrop-blur-sm">
