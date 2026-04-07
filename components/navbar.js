@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { label: "Home",       href: "/" },
   { label: "Services",   href: "/services" },
-  { label: "Work",       href: "/work" },
+  // { label: "Work",       href: "/work" },
   { label: "About Us",   href: "/about" },
   { label: "Industries", href: "/industries" },
   { label: "Blog",       href: "/blog" },
@@ -34,7 +34,7 @@ export default function Navbar() {
   return (
     <header
       className={`w-full sticky top-0 z-50 transition-all duration-500 ${
-        active ? "bg-[#e0f4fb] shadow-md" : "bg-transparent"
+        active ? "bg-[#ffffff] shadow-md" : "bg-transparent"
       }`}
     >
       {/* Top row: Logo | center slot | Contact */}

@@ -16,91 +16,159 @@ const LIGHT_CARD = "#f8fafc";
 /* ── Overview grid data (9 services) ──────────────────────────── */
 const OVERVIEW = [
   {
-    id: "01", title: "Strategy & Planning", tag: "Foundation",
-    desc: "Data-driven roadmaps that position your brand ahead of the competition. Research first, execution always.",
-    items: ["Market Research", "Competitor Analysis", "Brand Roadmap", "KPI Framework"],
-    icon: Target, color: BLUE, featured: true,
+    id: "01",
+    title: "Strategy & Planning",
+    tag: "Foundation",
+    desc: "Smart planning that gives your brand a clear path to grow.",
+    items: ["Market Research", "Competitor Study", "Brand Plan", "KPI Setup"],
+    icon: Target,
+    color: BLUE,
+    featured: true,
   },
   {
-    id: "02", title: "Brand Identity", tag: "Identity",
-    desc: "Logos, systems, and visual languages that make your brand instantly recognisable — and hard to forget.",
-    items: ["Logo Design", "Brand Guidelines", "Typography", "Colour System"],
-    icon: Layers, color: PINK,
+    id: "02",
+    title: "Brand Identity",
+    tag: "Identity",
+    desc: "Strong branding that makes your business look clear, trusted, and memorable.",
+    items: ["Logo Design", "Brand Guidelines", "Typography", "Color System"],
+    icon: Layers,
+    color: PINK,
   },
   {
-    id: "03", title: "Website Design", tag: "UI / UX",
-    desc: "Stunning, conversion-focused websites built around how your customers actually think and behave.",
-    items: ["UI Design", "UX Research", "Prototyping", "Responsive"],
-    icon: Globe, color: BLUE,
+    id: "03",
+    title: "Website Design",
+    tag: "Website",
+    desc: "Beautiful websites designed to impress, engage, and perform.",
+    items: ["UI Design", "User Research", "Prototyping", "Responsive Design"],
+    icon: Globe,
+    color: BLUE,
   },
   {
-    id: "04", title: "App Development", tag: "Mobile",
-    desc: "High-performance iOS & Android apps your users return to — built fast, shipped properly.",
-    items: ["iOS & Android", "React Native", "Backend API", "App Store"],
-    icon: Smartphone, color: PINK,
+    id: "04",
+    title: "App Development",
+    tag: "Mobile",
+    desc: "Modern mobile apps built for smooth performance and real user value.",
+    items: ["iOS & Android", "React Native", "Backend API", "App Launch"],
+    icon: Smartphone,
+    color: PINK,
   },
   {
-    id: "05", title: "Digital Marketing", tag: "Growth",
-    desc: "Full-funnel campaigns that reach the right audience and deliver measurable, repeatable ROI.",
+    id: "05",
+    title: "Digital Marketing",
+    tag: "Growth",
+    desc: "Marketing that reaches the right audience and drives real business growth.",
     items: ["PPC Ads", "Email Marketing", "Analytics", "Funnel Design"],
-    icon: TrendingUp, color: BLUE,
+    icon: TrendingUp,
+    color: BLUE,
   },
   {
-    id: "06", title: "Video Production", tag: "Storytelling",
-    desc: "Cinematic brand films, social reels, and product videos that stop the scroll and drive action.",
-    items: ["Brand Films", "Social Reels", "Product Demos", "Animation"],
-    icon: Video, color: PINK,
+    id: "06",
+    title: "Video Production",
+    tag: "Storytelling",
+    desc: "Creative videos that capture attention and bring your brand to life.",
+    items: ["Brand Films", "Social Reels", "Product Videos", "Animation"],
+    icon: Video,
+    color: PINK,
   },
   {
-    id: "07", title: "SEO & Content", tag: "Visibility",
-    desc: "Rank higher and get found faster. Technical SEO, content strategy, and local search dominance.",
+    id: "07",
+    title: "SEO & Content",
+    tag: "Visibility",
+    desc: "SEO and content that help your brand get seen and stay ahead online.",
     items: ["Technical SEO", "Content Strategy", "Local SEO", "Link Building"],
-    icon: Search, color: BLUE,
+    icon: Search,
+    color: BLUE,
   },
   {
-    id: "08", title: "Social Media", tag: "Community",
-    desc: "Consistent, engaging social presence across every platform that builds loyal brand communities.",
-    items: ["Content Calendar", "Community Mgmt", "Paid Social", "Analytics"],
-    icon: Share2, color: PINK,
+    id: "08",
+    title: "Social Media",
+    tag: "Community",
+    desc: "Social media management that keeps your brand active and connected.",
+    items: ["Content Calendar", "Community Management", "Paid Social", "Analytics"],
+    icon: Share2,
+    color: PINK,
   },
   {
-    id: "09", title: "Photography", tag: "Visual Assets",
-    desc: "Professional photography for products, events, and brand identity shoots that elevate perception.",
-    items: ["Product Shoots", "Event Coverage", "Brand Portraits", "Editing"],
-    icon: Camera, color: BLUE,
+    id: "09",
+    title: "Photography",
+    tag: "Visual Assets",
+    desc: "Professional photography that makes your brand look polished and powerful.",
+    items: ["Product Shoots", "Event Coverage", "Brand Portraits", "Photo Editing"],
+    icon: Camera,
+    color: BLUE,
   },
 ];
 
 /* ── Core services for sticky deep-dive ───────────────────────── */
 const CORE = [
   {
-    number: "01", title: "Strategy", tag: "Business Planning",
-    description: "We begin every engagement with deep research. Understanding your market, your competitors, and your customers lets us build a plan that actually works — not guesswork dressed up as strategy.",
-    bullets: ["Market & Competitor Research", "Brand Positioning", "Growth Roadmap", "KPI Framework"],
+    number: "01",
+    title: "Strategy",
+    tag: "Business Planning",
+    description:
+      "Smart planning that gives your business a clear path to grow.",
+    bullets: [
+      "Market Research",
+      "Competitor Research",
+      "Brand Positioning",
+      "Growth Plan"
+    ],
     accent: BLUE,
   },
   {
-    number: "02", title: "Branding", tag: "Brand Identity",
-    description: "A brand is not a logo. It's a system of trust signals. We craft cohesive brand identities that communicate quality and intention across every single touchpoint your customers encounter.",
-    bullets: ["Logo Design", "Brand Guidelines", "Typography System", "Brand Voice & Tone"],
+    number: "02",
+    title: "Branding",
+    tag: "Brand Identity",
+    description:
+      "Strong branding that makes your business look trusted, clear, and memorable.",
+    bullets: [
+      "Logo Design",
+      "Brand Guidelines",
+      "Typography",
+      "Brand Voice"
+    ],
     accent: PINK,
   },
   {
-    number: "03", title: "Design & Dev", tag: "Digital Products",
-    description: "From wireframe to live website — we design and build digital products that look stunning, load fast, and convert. Every pixel is intentional. Every interaction is tested.",
-    bullets: ["UI / UX Design", "Frontend Development", "CMS Integration", "Performance Optimisation"],
+    number: "03",
+    title: "Design & Dev",
+    tag: "Digital Products",
+    description:
+      "Beautiful websites built to perform, engage, and convert.",
+    bullets: [
+      "UI / UX Design",
+      "Frontend Development",
+      "CMS Integration",
+      "Fast Performance"
+    ],
     accent: BLUE,
   },
   {
-    number: "04", title: "Marketing", tag: "Growth Engine",
-    description: "Traffic without strategy is noise. We build end-to-end marketing systems — SEO, paid ads, email, social — that generate qualified leads consistently and measurably.",
-    bullets: ["SEO & Local Search", "Paid Advertising", "Social Media Management", "Email Campaigns"],
+    number: "04",
+    title: "Marketing",
+    tag: "Growth Engine",
+    description:
+      "Marketing that reaches the right people and drives real results.",
+    bullets: [
+      "SEO",
+      "Paid Ads",
+      "Social Media",
+      "Email Marketing"
+    ],
     accent: PINK,
   },
   {
-    number: "05", title: "Video & Photo", tag: "Visual Storytelling",
-    description: "Scroll-stopping video and photography that makes your brand impossible to ignore. We handle scripting, production, and post-production entirely in-house.",
-    bullets: ["Brand Films", "Product Photography", "Social Media Reels", "Event Coverage"],
+    number: "05",
+    title: "Video & Photo",
+    tag: "Visual Storytelling",
+    description:
+      "Creative visuals that capture attention and bring your brand to life.",
+    bullets: [
+      "Brand Videos",
+      "Product Photography",
+      "Social Media Reels",
+      "Event Coverage"
+    ],
     accent: BLUE,
   },
 ];
@@ -134,9 +202,9 @@ function useInView(ref, threshold = 0.08) {
 /* ── Hero ──────────────────────────────────────────────────────── */
 function Hero({ mounted }) {
   const words = [
-    { text: "We Build", delay: "0s" },
-    { text: "Experiences", delay: "0.18s" },
-    { text: "That Convert.", delay: "0.36s" },
+    { text: "We Build Digital", delay: "0s" },
+    { text: "Experiences That", delay: "0.18s" },
+    { text: "Grow Your Brand.", delay: "0.36s" },
   ];
 
   return (
@@ -217,7 +285,7 @@ function Hero({ mounted }) {
             transition: "opacity 0.8s ease 0.85s",
           }}
         >
-          {[["9+", "Core Services"], ["200+", "Projects Delivered"], ["50+", "Happy Clients"]].map(([num, label]) => (
+          {[["9+", "Core Services"], ["100+", "Projects Delivered"], ["50+", "Happy Clients"]].map(([num, label]) => (
             <div key={label}>
               <p className="font-extrabold" style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", color: DARK }}>
                 {num}
