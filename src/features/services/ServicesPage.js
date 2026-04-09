@@ -8,10 +8,11 @@ import {
 } from "lucide-react";
 
 /* ── Brand tokens ──────────────────────────────────────────────── */
-const BLUE       = "#0977a8";
-const PINK       = "#cc0066";
-const DARK       = "#0d1b2e";
-const LIGHT_CARD = "#f8fafc";
+const BLUE        = "#0977a8";
+const PINK        = "#cc0066";
+const VIVID_PINK  = "#f72585";   /* high-quality accent pink */
+const DARK        = "#0d1b2e";
+const LIGHT_CARD  = "#f8fafc";
 
 /* ── Overview grid data (9 services) ──────────────────────────── */
 const OVERVIEW = [
@@ -224,12 +225,20 @@ function Hero({ mounted }) {
         }}
       />
 
-      {/* Glowing orb */}
+      {/* Glowing orb — blue */}
       <div
         className="absolute top-1/3 right-1/4 w-96 h-96 rounded-full pointer-events-none"
         style={{
           background: `radial-gradient(circle, rgba(9,119,168,0.08) 0%, transparent 70%)`,
           filter: "blur(40px)",
+        }}
+      />
+      {/* Glowing orb — pink */}
+      <div
+        className="absolute bottom-1/4 right-1/3 w-72 h-72 rounded-full pointer-events-none"
+        style={{
+          background: `radial-gradient(circle, rgba(247,37,133,0.07) 0%, transparent 70%)`,
+          filter: "blur(48px)",
         }}
       />
 
@@ -331,19 +340,22 @@ function Ticker() {
   const items = [...TICKER, ...TICKER];
   return (
     <div
-      className="overflow-hidden border-y py-4"
-      style={{ borderColor: "rgba(0,0,0,0.07)", backgroundColor: "#eef4f8" }}
+      className="overflow-hidden py-[14px]"
+      style={{ backgroundColor: VIVID_PINK }}
     >
       <div
         className="flex gap-0 whitespace-nowrap"
-        style={{ animation: "ticker 30s linear infinite" }}
+        style={{ animation: "ticker 28s linear infinite" }}
       >
         {items.map((item, i) => (
-          <span key={i} className="inline-flex items-center gap-8 shrink-0">
-            <span className="text-[10px] font-semibold uppercase tracking-[0.35em] px-6" style={{ color: "#94a3b8" }}>
+          <span key={i} className="inline-flex items-center gap-6 shrink-0">
+            <span
+              className="text-[10px] font-bold uppercase tracking-[0.38em] px-5"
+              style={{ color: "rgba(255,255,255,0.92)" }}
+            >
               {item}
             </span>
-            <span style={{ color: BLUE, fontSize: "0.35rem" }}>◆</span>
+            <span style={{ color: "rgba(255,255,255,0.45)", fontSize: "0.3rem" }}>◆</span>
           </span>
         ))}
       </div>
@@ -459,7 +471,7 @@ function OverviewSection() {
           transition: "opacity 0.7s ease, transform 0.7s ease",
         }}
       >
-        <p className="text-xs uppercase tracking-[0.45em] font-semibold mb-3" style={{ color: BLUE }}>
+        <p className="text-xs uppercase tracking-[0.45em] font-semibold mb-3" style={{ color: VIVID_PINK }}>
           Everything We Do
         </p>
         <h2
@@ -720,6 +732,108 @@ function StickyServices() {
   );
 }
 
+/* ── Photo showcase band ───────────────────────────────────────── */
+const PHOTOS = [
+  {
+    src: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=900&q=80&auto=format&fit=crop",
+    label: "Website Design",
+    sub: "UI/UX & Dev",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80&auto=format&fit=crop",
+    label: "Digital Marketing",
+    sub: "Growth & Analytics",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=900&q=80&auto=format&fit=crop",
+    label: "Video & Photo",
+    sub: "Creative Production",
+  },
+];
+
+function PhotoBand() {
+  const ref    = useRef(null);
+  const inView = useInView(ref);
+
+  return (
+    <section
+      ref={ref}
+      className="max-w-6xl mx-auto px-4 sm:px-6 pb-24"
+      style={{
+        opacity:   inView ? 1 : 0,
+        transform: inView ? "translateY(0)" : "translateY(40px)",
+        transition: "opacity 0.8s ease, transform 0.8s ease",
+      }}
+    >
+      {/* Eyebrow */}
+      <div className="flex items-center gap-3 mb-8">
+        <div className="h-px flex-1 max-w-[40px]" style={{ backgroundColor: VIVID_PINK }} />
+        <p className="text-xs uppercase tracking-[0.45em] font-semibold" style={{ color: VIVID_PINK }}>
+          Our Craft
+        </p>
+      </div>
+
+      {/* 3-column image grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {PHOTOS.map((photo, i) => (
+          <div
+            key={photo.label}
+            className="relative overflow-hidden rounded-2xl group"
+            style={{
+              height: "320px",
+              opacity:   inView ? 1 : 0,
+              transform: inView ? "translateY(0)" : "translateY(30px)",
+              transition: `opacity 0.65s ease ${i * 0.12 + 0.15}s, transform 0.65s ease ${i * 0.12 + 0.15}s`,
+            }}
+          >
+            {/* Photo */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={photo.src}
+              alt={photo.label}
+              loading="lazy"
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+
+            {/* Dark gradient overlay */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: "linear-gradient(to top, rgba(13,27,46,0.82) 0%, rgba(13,27,46,0.15) 55%, transparent 100%)",
+              }}
+            />
+
+            {/* Pink top accent bar */}
+            <div
+              className="absolute top-0 left-0 right-0 h-[3px]"
+              style={{ backgroundColor: VIVID_PINK }}
+            />
+
+            {/* Label */}
+            <div className="absolute bottom-0 left-0 right-0 p-5">
+              <span
+                className="text-[9px] font-bold uppercase tracking-[0.32em] mb-1.5 block"
+                style={{ color: VIVID_PINK }}
+              >
+                {photo.sub}
+              </span>
+              <p className="text-white font-extrabold tracking-tight leading-tight" style={{ fontSize: "1.1rem" }}>
+                {photo.label}
+              </p>
+            </div>
+
+            {/* Hover pink glow border */}
+            <div
+              className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
+              style={{ boxShadow: `inset 0 0 0 2px ${VIVID_PINK}60` }}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 /* ── Sticky section label ──────────────────────────────────────── */
 function SectionLabel() {
   const ref    = useRef(null);
@@ -735,7 +849,7 @@ function SectionLabel() {
         transition: "opacity 0.7s ease, transform 0.7s ease",
       }}
     >
-      <p className="text-xs uppercase tracking-[0.45em] font-semibold mb-3" style={{ color: BLUE }}>
+      <p className="text-xs uppercase tracking-[0.45em] font-semibold mb-3" style={{ color: VIVID_PINK }}>
         Core Process
       </p>
       <h2
@@ -873,6 +987,7 @@ export default function ServicesPage() {
       <Hero mounted={mounted} />
       <Ticker />
       <OverviewSection />
+      <PhotoBand />
       <SectionLabel />
       <StickyServices />
 

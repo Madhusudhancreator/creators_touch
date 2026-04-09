@@ -22,6 +22,7 @@ const INDUSTRIES = [
     icon: GraduationCap,
     from: "#0977a8",
     to:   "#0553a1",
+    img:  "/assets/industry/in%201.png",
   },
   {
     id: "02",
@@ -32,6 +33,7 @@ const INDUSTRIES = [
     icon: HeartPulse,
     from: "#059669",
     to:   "#0369a1",
+    img:  "/assets/industry/in%202.png",
   },
   {
     id: "03",
@@ -42,6 +44,7 @@ const INDUSTRIES = [
     icon: Building2,
     from: "#d97706",
     to:   "#b45309",
+    img:  "/assets/industry/in%203.png",
   },
   {
     id: "04",
@@ -52,6 +55,7 @@ const INDUSTRIES = [
     icon: ShoppingBag,
     from: "#e11d48",
     to:   "#9f1239",
+    img:  "/assets/industry/in%204.png",
   },
   {
     id: "05",
@@ -62,6 +66,7 @@ const INDUSTRIES = [
     icon: UtensilsCrossed,
     from: "#16a34a",
     to:   "#065f46",
+    img:  "/assets/industry/in%205.png",
   },
   {
     id: "06",
@@ -72,9 +77,10 @@ const INDUSTRIES = [
     icon: BedDouble,
     from: "#ea580c",
     to:   "#c2410c",
+    img:  "/assets/industry/in%207.png",
   },
   {
-    id: "07",
+    id: "07",  
     name: "Jewellery",
     tag: "Jewellers · Designers · Brands",
     desc: "We bring the craftsmanship of your pieces to life digitally — high-end product photography, refined brand identity, and curated social content that conveys real luxury.",
@@ -82,6 +88,7 @@ const INDUSTRIES = [
     icon: Gem,
     from: "#7c3aed",
     to:   "#5b21b6",
+    img:  "/assets/industry/in%206.png",
   },
   {
     id: "08",
@@ -92,6 +99,7 @@ const INDUSTRIES = [
     icon: HardHat,
     from: "#78716c",
     to:   "#44403c",
+    img:  "/assets/industry/in%208.png",
   },
   {
     id: "09",
@@ -102,6 +110,7 @@ const INDUSTRIES = [
     icon: Landmark,
     from: "#334155",
     to:   "#1e3a5f",
+    img:  "/assets/industry/in%209.png",
   },
 ];
 
@@ -235,23 +244,37 @@ function IndustryRow({ industry, index }) {
       {/* ── Gradient / visual panel ── */}
       <div
         className={`relative flex items-center justify-center overflow-hidden ${!isLeft ? "lg:order-2" : ""}`}
-        style={{
-          minHeight: "420px",
-          background: `linear-gradient(135deg, ${industry.from} 0%, ${industry.to} 100%)`,
-        }}
+        style={{ minHeight: "420px" }}
       >
+        {/* Background photo */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={industry.img}
+          alt={industry.name}
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
+
+        {/* Gradient colour overlay — tints the photo with the industry colour */}
+        <div
+          className="absolute inset-0"
+          // style={{
+          //   background: `linear-gradient(135deg, ${industry.from}d6 0%, ${industry.to}d6 100%)`,
+          // }}
+        />
+
         {/* Radial glow overlay */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 70% 60% at 30% 40%, rgba(255,255,255,0.12) 0%, transparent 60%)",
+              "radial-gradient(ellipse 70% 60% at 30% 40%, rgba(255,255,255,0.1) 0%, transparent 60%)",
           }}
         />
 
         {/* Dot grid overlay */}
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-15"
           style={{
             backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px)",
             backgroundSize:  "28px 28px",
@@ -259,7 +282,7 @@ function IndustryRow({ industry, index }) {
         />
 
         {/* Icon card */}
-        <div className="relative z-10 flex flex-col items-center gap-5 px-8 text-center">
+        {/* <div className="relative z-10 flex flex-col items-center gap-5 px-8 text-center">
           <div
             className="w-24 h-24 rounded-3xl flex items-center justify-center"
             style={{
@@ -273,7 +296,7 @@ function IndustryRow({ industry, index }) {
           <p className="text-white/70 text-xs font-semibold uppercase tracking-[0.32em]">
             {industry.tag}
           </p>
-        </div>
+        </div> */}
 
         {/* Ghost industry number */}
         <span

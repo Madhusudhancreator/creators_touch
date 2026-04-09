@@ -12,7 +12,7 @@ const DEFAULT_DATA = {
   tagline: "From brand strategy to digital execution — we craft experiences that make your business stand out. Let's build something remarkable together.",
   brand:   "— Creators Touch Global",
   details: [
-    { type: "phone", label: "Call Us",  value: "+91 98765 43210",        href: "tel:+919876543210"              },
+    { type: "phone", label: "Call Us",  value: "+91 98859 33339",        href: "tel:+919885933339"              },
     { type: "email", label: "Email Us", value: "hello@creatorstouch.in", href: "mailto:hello@creatorstouch.in" },
     { type: "map",   label: "Visit Us", value: "Vijayawada, Andhra Pradesh, India", href: null                 },
   ],

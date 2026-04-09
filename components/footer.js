@@ -29,9 +29,9 @@ const industries = [
 ];
 
 const company = [
-  { label: "About Us",  href: "/about"    },
-  // { label: "Our Work",  href: "/work"     },
-  { label: "Services",  href: "/services" },
+  { label: "About Us",  href: "/about"         },
+  { label: "Our Work",  href: "/work" },
+  { label: "Services",  href: "/services"       },
   { label: "Blog",      href: "/blog"     },
   { label: "Contact",   href: "/contact"  },
 ];
@@ -47,7 +47,7 @@ export default function Footer() {
   return (
     <footer>
       {/* ── CTA Banner ── */}
-      <div className="bg-[#e0f4fb] py-16 px-4 text-center">
+      {/* <div className="bg-[#e0f4fb] py-16 px-4 text-center">
         <h2 className="text-2xl sm:text-4xl font-bold text-[#0d1b2e]">
           We Treat Our Clients Like Partners
         </h2>
@@ -61,7 +61,7 @@ export default function Footer() {
         >
           Get a Proposal <ArrowRight size={16} />
         </Link>
-      </div>
+      </div> */}
 
       {/* ── Footer Body ── */}
       <div className="bg-[#0d1b2e] pt-14 pb-8 px-4">
@@ -181,8 +181,8 @@ export default function Footer() {
             </div>
             <div>
               <p className="text-xs font-semibold text-[#0977a8] mb-1">Phone</p>
-              <a href="tel:+919876543210" className="text-xs text-white/40 hover:text-white transition-colors">
-                +91 98765 43210
+              <a href="tel:+919885933339" className="text-xs text-white/40 hover:text-white transition-colors">
+                +91 98859 33339
               </a>
             </div>
           </div>

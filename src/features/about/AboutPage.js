@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight, Lightbulb, Heart, Zap, Shield,
-  Users, Award, Globe, TrendingUp, ArrowDown,
+  Users, Award, Globe, TrendingUp, ArrowDown, User,
 } from "lucide-react";
 
 /* ── Brand tokens ──────────────────────────────────────────────── */
@@ -53,71 +53,83 @@ const VALUES = [
 /* ── Team data ─────────────────────────────────────────────────── */
 const TEAM = [
   {
-    name: "Founder & Creative Director",
-    role: "Vision & Strategy",
-    initials: "CTG",
+    name: "SriHarikrishna",
+    role: "Founder",
+    initials: "SH",
     accent: BLUE,
-    bio: "The visionary behind Creators Touch Global, driving creative direction and client strategy across every project.",
+    bio: "The visionary who built Creators Touch Global from the ground up — leading creative direction, client relationships, and the long-term growth of the brand since 2010.",
+    img: null,   // replace with photo path when ready
   },
   {
-    name: "Lead Designer",
-    role: "UI / UX & Branding",
-    initials: "LD",
+    name: "Chandu",
+    role: "Chief Executive Officer",
+    initials: "CH",
     accent: PINK,
-    bio: "Transforms ideas into stunning visual experiences — from brand identities to pixel-perfect digital interfaces.",
+    bio: "Drives business strategy and day-to-day operations, ensuring every project is delivered with excellence and every client partnership keeps growing stronger.",
+    img: null,
   },
   {
-    name: "Digital Marketing Head",
-    role: "Growth & SEO",
-    initials: "DM",
+    name: "Deepika",
+    role: "Marketing",
+    initials: "DK",
     accent: BLUE,
-    bio: "Builds and executes data-driven campaigns that grow audiences, generate leads, and deliver measurable ROI.",
+    bio: "Builds and executes data-driven campaigns that grow audiences, generate qualified leads, and deliver measurable ROI across every channel.",
+    img: null,
   },
   {
-    name: "Video Production Lead",
-    role: "Films & Photography",
-    initials: "VP",
+    name: "Sabi",
+    role: "Website Developer",
+    initials: "SB",
     accent: PINK,
-    bio: "Crafts cinematic brand stories and stunning visual content that stop the scroll and drive real engagement.",
+    bio: "Crafts fast, responsive, and visually stunning websites — turning design concepts into real-world digital experiences that truly perform.",
+    img: null,
+  },
+  {
+    name: "Madhsudhan",
+    role: "Sr. Full Stack Developer",
+    initials: "MS",
+    accent: BLUE,
+    bio: "Architects and builds complex full-stack applications — from scalable backend systems and APIs to polished frontends that grow with the business.",
+    img: null,
   },
 ];
 
 /* ── Journey milestones ────────────────────────────────────────── */
 const JOURNEY = [
   {
-    year: "2020",
+    year: "2010",
     title: "Where It All Started",
-    desc: "Founded with a single mission: to give every business — big or small — access to world-class creative work. Started with a laptop, big ideas, and zero compromises.",
+    desc: "Founded in Vijayawada with a single mission: to give every business access to world-class creative work. What started as a bold idea quickly grew into a studio built on craft, care, and zero compromises.",
     accent: BLUE,
   },
   {
-    year: "2021",
-    title: "First 50 Clients",
-    desc: "Word spread fast. Brands across education, healthcare, and retail came to us because they wanted something different — and we delivered. Our first major milestone hit.",
+    year: "2013",
+    title: "First Landmark Clients",
+    desc: "Word spread fast. Brands across education, healthcare, and retail came to us because they wanted something different — and we delivered. Our first major milestone, built entirely on referrals.",
     accent: PINK,
   },
   {
-    year: "2022",
+    year: "2016",
     title: "Full-Service Studio",
-    desc: "We expanded into video production, app development, and SEO — becoming a true one-stop creative studio. Our team grew. Our ambition grew even faster.",
+    desc: "We expanded into video production, app development, and SEO — becoming a true one-stop creative studio. Our team grew, our capabilities deepened, and our ambition grew even faster.",
     accent: BLUE,
+  },
+  {
+    year: "2020",
+    title: "Going Digital-First",
+    desc: "As the world shifted online, we were ready. We doubled down on digital services, helping brands adapt and emerge stronger — turning disruption into their biggest growth opportunity.",
+    accent: PINK,
   },
   {
     year: "2023",
     title: "Going National",
-    desc: "Projects started coming in from across India. From Vijayawada to Delhi, Mumbai to Bangalore — the Creators Touch name was building real momentum.",
-    accent: PINK,
-  },
-  {
-    year: "2024",
-    title: "1000+ Clients Served",
-    desc: "A landmark number and a humbling reminder of the trust businesses placed in us. We crossed 1,000 clients while maintaining the quality that got us here.",
+    desc: "Projects started coming in from across India. From Vijayawada to Delhi, Mumbai to Bangalore — the Creators Touch name was building real momentum on a national scale.",
     accent: BLUE,
   },
   {
     year: "Today",
-    title: "Still Building",
-    desc: "We're not slowing down. New services, new markets, new possibilities. The story is still being written — and we'd love for your brand to be part of the next chapter.",
+    title: "1000+ Stories & Still Building",
+    desc: "A landmark number and a humbling reminder of the trust thousands of businesses placed in us. We're not slowing down — new services, new markets, and new possibilities lie ahead.",
     accent: PINK,
   },
 ];
@@ -244,7 +256,7 @@ function Hero({ mounted }) {
           {[
             ["1000+", "Clients Served"],
             ["9+",    "Core Services"],
-            ["5+",    "Years Growing"],
+            ["15+",   "Years Growing"],
           ].map(([num, label]) => (
             <div key={label}>
               <p
@@ -569,7 +581,7 @@ function JourneySection() {
           className="font-extrabold tracking-tight mb-16"
           style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)", color: DARK }}
         >
-          From One Idea<br />to 1000+ Stories
+          15 Years.<br />1000+ Stories.
         </h2>
 
         {/* Timeline */}
@@ -673,11 +685,14 @@ function MilestoneContent({ milestone }) {
 
 /* ── Team section ──────────────────────────────────────────────── */
 function TeamSection() {
-  const ref    = useRef(null);
-  const inView = useInView(ref);
+  const ref     = useRef(null);
+  const inView  = useInView(ref);
+  const leaders = TEAM.slice(0, 2);   // Founder + CEO
+  const members = TEAM.slice(2);      // rest of team
 
   return (
     <section className="max-w-6xl mx-auto px-6 sm:px-14 lg:px-24 py-28">
+      {/* Heading */}
       <div
         ref={ref}
         className="mb-14"
@@ -704,16 +719,24 @@ function TeamSection() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {TEAM.map((member, i) => (
-          <TeamCard key={member.name} member={member} index={i} />
+      {/* Row 1 — Founder & CEO (large featured cards) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+        {leaders.map((member, i) => (
+          <TeamCard key={member.name} member={member} index={i} featured />
+        ))}
+      </div>
+
+      {/* Row 2 — Rest of the team */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        {members.map((member, i) => (
+          <TeamCard key={member.name} member={member} index={i + 2} />
         ))}
       </div>
     </section>
   );
 }
 
-function TeamCard({ member, index }) {
+function TeamCard({ member, index, featured = false }) {
   const ref    = useRef(null);
   const inView = useInView(ref);
 
@@ -724,40 +747,92 @@ function TeamCard({ member, index }) {
       style={{
         backgroundColor: LIGHT_CARD,
         border: "1px solid #e2e8f0",
-        borderTop: `2px solid ${member.accent}`,
-        padding: "1.75rem",
         opacity:    inView ? 1 : 0,
         transform:  inView ? "translateY(0)" : "translateY(48px)",
         transition: `opacity 0.65s ease ${index * 0.1}s, transform 0.65s ease ${index * 0.1}s`,
       }}
     >
-      {/* Avatar placeholder */}
+      {/* ── Photo area ── */}
       <div
-        className="w-16 h-16 rounded-2xl flex items-center justify-center mb-5 font-extrabold text-lg"
-        style={{
-          background: `linear-gradient(135deg, ${member.accent}22 0%, ${member.accent}08 100%)`,
-          color: member.accent,
-          border: `1px solid ${member.accent}30`,
-        }}
+        className="relative overflow-hidden w-full"
+        style={{ height: featured ? "260px" : "200px" }}
       >
-        {member.initials}
+        {member.img ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={member.img}
+            alt={member.name}
+            className="w-full h-full object-cover object-top"
+          />
+        ) : (
+          /* Styled placeholder — swap with real photo anytime */
+          <div
+            className="w-full h-full flex flex-col items-center justify-center gap-3"
+            style={{
+              background: `linear-gradient(160deg, ${member.accent}14 0%, ${member.accent}06 100%)`,
+            }}
+          >
+            {/* Silhouette circle */}
+            <div
+              className="flex items-center justify-center rounded-full"
+              style={{
+                width:  featured ? 88 : 72,
+                height: featured ? 88 : 72,
+                backgroundColor: `${member.accent}18`,
+                border: `2px dashed ${member.accent}35`,
+              }}
+            >
+              <User
+                style={{
+                  color: `${member.accent}70`,
+                  width:  featured ? 38 : 30,
+                  height: featured ? 38 : 30,
+                }}
+              />
+            </div>
+            <span
+              className="text-[10px] font-medium tracking-wider uppercase"
+              style={{ color: `${member.accent}60` }}
+            >
+              Photo coming soon
+            </span>
+          </div>
+        )}
+
+        {/* Top accent bar */}
+        <div
+          className="absolute top-0 left-0 right-0 h-[3px]"
+          style={{ backgroundColor: member.accent }}
+        />
+
+        {/* Bottom gradient fade into card body */}
+        <div
+          className="absolute bottom-0 left-0 right-0 h-10 pointer-events-none"
+          style={{ background: `linear-gradient(to top, ${LIGHT_CARD}, transparent)` }}
+        />
       </div>
 
-      <p
-        className="text-[10px] font-semibold uppercase tracking-[0.3em] mb-1.5"
-        style={{ color: member.accent }}
-      >
-        {member.role}
-      </p>
-      <h3
-        className="font-extrabold tracking-tight leading-snug mb-3"
-        style={{ fontSize: "clamp(0.9rem, 1.5vw, 1.05rem)", color: DARK }}
-      >
-        {member.name}
-      </h3>
-      <p className="text-xs leading-relaxed flex-1" style={{ color: "#94a3b8" }}>
-        {member.bio}
-      </p>
+      {/* ── Content ── */}
+      <div className="px-6 pb-6 pt-3 flex flex-col flex-1">
+        <p
+          className="text-[10px] font-bold uppercase tracking-[0.32em] mb-1"
+          style={{ color: member.accent }}
+        >
+          {member.role}
+        </p>
+        <h3
+          className="font-extrabold tracking-tight leading-snug mb-3"
+          style={{
+            fontSize: featured ? "clamp(1.15rem, 2vw, 1.4rem)" : "clamp(0.95rem, 1.5vw, 1.1rem)",
+            color: DARK,
+          }}
+        >
+          {member.name}
+        </h3>
+        <p className="text-xs leading-relaxed flex-1" style={{ color: "#94a3b8" }}>
+          {member.bio}
+        </p>
+      </div>
 
       {/* Hover bottom line */}
       <div
@@ -777,7 +852,7 @@ function StatsSection() {
     { icon: Users,      num: "1000+", label: "Clients Served"    },
     { icon: Award,      num: "200+",  label: "Projects Delivered" },
     { icon: Globe,      num: "9+",    label: "Services Offered"   },
-    { icon: TrendingUp, num: "5+",    label: "Years of Growth"    },
+    { icon: TrendingUp, num: "15+",   label: "Years of Growth"    },
   ];
 
   return (
@@ -908,7 +983,7 @@ export default function AboutPage() {
 
       <Hero mounted={mounted} />
       <Ticker />
-      <MissionSection />
+      {/* <MissionSection /> */}
       <ValuesSection />
       <StatsSection />
       <JourneySection />

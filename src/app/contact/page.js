@@ -8,9 +8,9 @@ const contactDetails = [
   {
     icon: Phone,
     label: "Call Us",
-    value: "+91 98765 43210",
+    value: "+91 98859 33339",
     sub: "Mon – Sat, 9 AM – 7 PM",
-    href: "tel:+919876543210",
+    href: "tel:+919885933339",
   },
   {
     icon: Mail,
