@@ -59,7 +59,7 @@ export default function Navbar() {
             className={`absolute hidden md:block lg:block xl: whitespace-nowrap text-xl md:text-2xl font-extrabold tracking-[0.2em] uppercase transition-all duration-500 ${
               active
                 ? "opacity-0 -translate-y-6 pointer-events-none"
-                : "opacity-100 translate-y-0 text-white"
+                : "opacity-100 translate-y-0 text-black"
             }`}
           >
             Creators Touch
@@ -93,7 +93,7 @@ export default function Navbar() {
             className={`text-sm font-semibold px-5 py-2 rounded-lg border transition-all duration-300 ${
               active
                 ? "border-[#0977a8] text-[#0977a8] hover:bg-[#0977a8] hover:text-white"
-                : "border-white/50 text-white hover:bg-white/10"
+                : "border-black text-black hover:bg-black/10"
             }`}
           >
             Contact Us
@@ -107,9 +107,9 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           {menuOpen ? (
-            <X size={20} className={active ? "text-[#0d1b2e]" : "text-white"} />
+            <X size={20} className={active ? "text-[#0d1b2e]" : "text-black"} />
           ) : (
-            <Menu size={20} className={active ? "text-[#0d1b2e]" : "text-white"} />
+            <Menu size={20} className={active ? "text-[#0d1b2e]" : "text-black"} />
           )}
         </button>
       </div>
@@ -120,12 +120,12 @@ export default function Navbar() {
           active ? "max-h-0 opacity-0 pb-0" : "max-h-16 opacity-100 pb-3"
         }`}
       >
-        <ul className="flex items-center justify-center gap-1 rounded-full px-3 py-1 w-fit mx-auto bg-white/10 backdrop-blur-sm">
+        <ul className="flex items-center justify-center gap-1 rounded-full px-3 py-1 w-fit mx-auto bg-black/5 backdrop-blur-sm">
           {navLinks.map((link) => (
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-xs font-medium px-4 py-1.5 rounded-full text-white/80 hover:text-white hover:bg-white/15 transition-colors duration-200"
+                className="text-xs font-medium px-4 py-1.5 rounded-full text-black/80 hover:text-black hover:bg-black/10 transition-colors duration-200"
               >
                 {link.label}
               </Link>

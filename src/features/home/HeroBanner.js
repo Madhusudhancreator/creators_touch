@@ -44,7 +44,7 @@ export default function HeroBanner({ block = null }) {
         ref={imgRef}
         src="/assets/images/banner.png"
         alt="Banner"
-        className="hidden md:block absolute inset-0 w-full h-full object-cover will-change-transform"
+        className="hidden md:block absolute inset-0 w-full h-full will-change-transform"
         style={{ transformOrigin: "center center", transition: "transform 0.1s linear" }}
       />
 
