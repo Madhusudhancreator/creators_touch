@@ -42,7 +42,7 @@ export default function HeroBanner({ block = null }) {
       {/* Desktop background image */}
       <img
         ref={imgRef}
-        src="/assets/images/banner.png"
+        src="/assets/images/banner.jpeg"
         alt="Banner"
         className="hidden md:block absolute inset-0 w-full h-full will-change-transform"
         style={{ transformOrigin: "center center", transition: "transform 0.1s linear" }}

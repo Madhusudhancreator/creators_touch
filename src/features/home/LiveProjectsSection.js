@@ -13,7 +13,7 @@ const PROJECTS = [
     domain:   "trusthospital.com",
     category: "Healthcare",
     desc:     "Full hospital website with patient information, specialist listings, and appointment booking.",
-    accent:   BLUE,
+    accent:   BLUE,     
   },
   {
     name:     "Anjaneya Jewellery",
