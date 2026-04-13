@@ -1,3 +1,46 @@
+/**
+ * Maps a raw DB blog row (from GET /api/blogs) to the same shape as POSTS entries.
+ * DB shape: { id, slug, tag, title, excerpt, img, read_time, body, published, created_at }
+ * Display shape: { slug, tag, date, title, excerpt, img, read, body }
+ */
+/**
+ * Maps a raw DB blog row (v2 schema) to the display shape used by all
+ * frontend components.
+ *
+ * DB shape (v2): { id, slug, title, description, body_markdown, body_html,
+ *   processed_html, canonical_url, social_image, published, published_at,
+ *   reading_time, tags_array, cached_tag_list, author_id, created_at, updated_at }
+ *
+ * Display shape: { slug, tag, date, title, excerpt, img, read, body,
+ *   body_html, canonical_url }
+ */
+export function normalizeDbPost(post) {
+  const dateSource = post.published_at || post.created_at;
+  return {
+    slug:          post.slug,
+    // Use first tag from tags_array, or fall back to cached_tag_list
+    tag:           (Array.isArray(post.tags_array) && post.tags_array[0])
+                     || post.cached_tag_list
+                     || "",
+    date:          dateSource
+                     ? new Date(dateSource).toLocaleDateString("en-US", {
+                         month: "long", day: "numeric", year: "numeric",
+                       })
+                     : "",
+    title:         post.title,
+    excerpt:       post.description   || "",
+    img:           post.social_image  || "",
+    read:          post.reading_time  ? `${post.reading_time} min read` : "",
+    // body_html is used by the slug page for rich rendering
+    body_html:     post.processed_html || post.body_html || "",
+    // body kept as fallback array for static-post compatibility
+    body:          post.body_markdown
+                     ? post.body_markdown.split(/\n{2,}/).map((p) => p.trim()).filter(Boolean)
+                     : [],
+    canonical_url: post.canonical_url || "",
+  };
+}
+
 export const POSTS = [
   {
     slug:    "first-impressions-online-worth-more-than-billboard",

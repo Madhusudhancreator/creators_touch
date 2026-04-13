@@ -18,6 +18,24 @@ const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
  *
  * @returns {Promise<Array|null>}
  */
+/**
+ * Fetches all blog posts from GET /api/blogs.
+ * Returns an array, or null if the request fails.
+ *
+ * @returns {Promise<Array|null>}
+ */
+export async function fetchBlogs() {
+  try {
+    const res = await fetch(`${BASE_URL}/api/blogs`, {
+      next: { revalidate: 60 },
+    });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
 export async function fetchBlocks() {
   try {
     const res = await fetch(`${BASE_URL}/api/blocks`, {

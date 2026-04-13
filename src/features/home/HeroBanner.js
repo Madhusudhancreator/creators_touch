@@ -38,7 +38,7 @@ export default function HeroBanner({ block = null }) {
   const bottomLabel = data.labels?.find((l) => l.position === "bottom") ?? DEFAULT_DATA.labels[2];
 
   return (
-    <section className="-mt-[110px] relative overflow-hidden h-screen bg-white">
+    <section className="-mt-[65px] relative overflow-hidden h-screen bg-white">
       {/* Desktop background image */}
       <img
         ref={imgRef}

@@ -52,14 +52,42 @@ export default function ContactPage() {
     name: "", email: "", phone: "", service: "", budget: "", message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   const handleChange = (e) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: POST to /api/contact
-    setSubmitted(true);
+    setSubmitError(null);
+    setSubmitting(true);
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"}/api/contact`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            full_name: form.name,
+            phone:     form.phone,
+            email:     form.email,
+            service:   form.service,
+            budget:    form.budget,
+            message:   form.message,
+          }),
+        }
+      );
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        throw new Error(body.message || "Something went wrong. Please try again.");
+      }
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(err.message);
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -113,6 +141,12 @@ export default function ContactPage() {
         <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8 sm:p-10">
           <h2 className="text-2xl font-bold text-[#0d1b2e] mb-1">Send Us a Message</h2>
           <p className="text-sm text-gray-500 mb-8">Fill in the form below and we&apos;ll reach out shortly.</p>
+
+          {submitError && (
+            <div className="mb-6 bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl px-4 py-3">
+              {submitError}
+            </div>
+          )}
 
           {submitted ? (
             <div className="flex flex-col items-center justify-center text-center gap-4 py-16">
@@ -202,10 +236,11 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="flex items-center justify-center gap-2 text-sm font-bold text-white py-4 rounded-xl transition-opacity hover:opacity-90 active:scale-[0.98]"
+                disabled={submitting}
+                className="flex items-center justify-center gap-2 text-sm font-bold text-white py-4 rounded-xl transition-opacity hover:opacity-90 active:scale-[0.98] disabled:opacity-60"
                 style={{ backgroundColor: "#0977a8" }}
               >
-                <Send size={16} /> Send Message
+                <Send size={16} /> {submitting ? "Sending…" : "Send Message"}
               </button>
             </form>
           )}

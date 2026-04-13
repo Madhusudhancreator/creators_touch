@@ -49,35 +49,18 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Center slot — title fades up, nav links fade in */}
+        {/* Center nav links */}
         <div className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center">
-
-          {/* Brand title: visible at top on home, slides up + fades on scroll */}
-          <Link
-            href="/"
-            aria-hidden={active}
-            className={`absolute hidden md:block lg:block xl: whitespace-nowrap text-xl md:text-2xl font-extrabold tracking-[0.2em] uppercase transition-all duration-500 ${
-              active
-                ? "opacity-0 -translate-y-6 pointer-events-none"
-                : "opacity-100 translate-y-0 text-black"
-            }`}
-          >
-            Creators Touch
-          </Link>
-
-          {/* Nav links: hidden at top on home, always visible on inner pages */}
-          <ul
-            className={`hidden md:flex items-center gap-1 rounded-full px-3 py-1 transition-all duration-500 ${
-              active
-                ? "opacity-100 translate-y-0 bg-white/60"
-                : "opacity-0 translate-y-6 pointer-events-none bg-transparent"
-            }`}
-          >
+          <ul className={`hidden md:flex items-center gap-1 rounded-full px-3 py-1 ${active ? "bg-white/60" : "bg-black/5"}`}>
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="text-xs font-medium px-4 py-1.5 rounded-full text-[#0d1b2e] hover:bg-[#0977a8] hover:text-white transition-colors duration-200"
+                  className={`text-xs font-medium px-4 py-1.5 rounded-full transition-colors duration-200 ${
+                    active
+                      ? "text-[#0d1b2e] hover:bg-[#0977a8] hover:text-white"
+                      : "text-black/80 hover:text-black hover:bg-black/10"
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -114,27 +97,8 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Bottom row: Nav links pills — only shown on home when not scrolled */}
-      <div
-        className={`hidden md:block overflow-hidden transition-all duration-500 ${
-          active ? "max-h-0 opacity-0 pb-0" : "max-h-16 opacity-100 pb-3"
-        }`}
-      >
-        <ul className="flex items-center justify-center gap-1 rounded-full px-3 py-1 w-fit mx-auto bg-black/5 backdrop-blur-sm">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-xs font-medium px-4 py-1.5 rounded-full text-black/80 hover:text-black hover:bg-black/10 transition-colors duration-200"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
 
-      {/* Mobile dropdown */}
+{/* Mobile dropdown */}
       {menuOpen && (
         <div className="absolute top-16 left-4 right-4 bg-white rounded-2xl shadow-lg px-5 py-4 md:hidden">
           <ul className="flex flex-col gap-1">

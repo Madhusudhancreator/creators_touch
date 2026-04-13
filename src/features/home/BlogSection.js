@@ -1,10 +1,16 @@
 import Link from "next/link";
-import { POSTS } from "@/src/features/blog/posts";
+import { POSTS, normalizeDbPost } from "@/src/features/blog/posts";
+import { fetchBlogs } from "@/src/lib/api";
 
-const BLOGS = POSTS.slice(0, 2);
+const MIN_DB_COUNT = 1; // use DB only when count > this
 
+export default async function BlogSection({ block = null }) {
+  const dbBlogs = await fetchBlogs();
+  const posts =
+    Array.isArray(dbBlogs) && dbBlogs.length > MIN_DB_COUNT
+      ? dbBlogs.map(normalizeDbPost).slice(0, 2)
+      : POSTS.slice(0, 2);
 
-export default function BlogSection() {
   return (
     <section id="blog" className="bg-white">
 
@@ -37,7 +43,7 @@ export default function BlogSection() {
 
         {/* 2 cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-          {BLOGS.map((post) => (
+          {posts.map((post) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}

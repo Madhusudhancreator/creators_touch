@@ -3,7 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { POSTS } from "./posts";
+import { POSTS, normalizeDbPost } from "./posts";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
+// Show DB posts only when there are MORE than this many (i.e. > 1 means ≥ 2)
+const MIN_DB_COUNT = 1;
 
 const INITIAL = 4;
 const BATCH   = 2;
@@ -100,14 +104,26 @@ function PostCard({ post, index, featured }) {
 
 /* ── Listing page ──────────────────────────────────────────────── */
 export default function BlogListing() {
-  const [visible, setVisible]   = useState(INITIAL);
-  const [mounted, setMounted]   = useState(false);
+  const [visible, setVisible] = useState(INITIAL);
+  const [mounted, setMounted] = useState(false);
+  const [posts, setPosts]     = useState(POSTS);
 
-  // Hero mounts client-side to trigger animation
   useEffect(() => setMounted(true), []);
 
-  const shown   = POSTS.slice(0, visible);
-  const hasMore = visible < POSTS.length;
+  // Fetch from DB on mount; use DB posts only when count > MIN_DB_COUNT
+  useEffect(() => {
+    fetch(`${API_URL}/api/blogs`)
+      .then((r) => (r.ok ? r.json() : null))
+      .catch(() => null)
+      .then((dbPosts) => {
+        if (Array.isArray(dbPosts) && dbPosts.length > MIN_DB_COUNT) {
+          setPosts(dbPosts.map(normalizeDbPost));
+        }
+      });
+  }, []);
+
+  const shown   = posts.slice(0, visible);
+  const hasMore = visible < posts.length;
 
   return (
     <main style={{ backgroundColor: "#0d1b2e", minHeight: "100vh" }}>

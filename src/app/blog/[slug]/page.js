@@ -1,16 +1,29 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
-import { POSTS } from "@/src/features/blog/posts";
+import { POSTS, normalizeDbPost } from "@/src/features/blog/posts";
+import { fetchBlogs } from "@/src/lib/api";
 
-/* ── Static params for all slugs ──────────────────────────────── */
+const MIN_DB_COUNT = 1; // show DB when count > this
+
+/* ── Resolve posts list: DB (if >1) or static fallback ─────────── */
+async function resolvePosts() {
+  const dbBlogs = await fetchBlogs();
+  if (Array.isArray(dbBlogs) && dbBlogs.length > MIN_DB_COUNT) {
+    return dbBlogs.map(normalizeDbPost);
+  }
+  return POSTS;
+}
+
+/* ── Static params — pre-render static slugs at build time ──────── */
 export function generateStaticParams() {
   return POSTS.map((p) => ({ slug: p.slug }));
 }
 
 /* ── Per-post SEO metadata ─────────────────────────────────────── */
-export function generateMetadata({ params }) {
-  const post = POSTS.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }) {
+  const all  = await resolvePosts();
+  const post = all.find((p) => p.slug === params.slug);
   if (!post) return {};
   return {
     title:       `${post.title} — Creators Touch Blog`,
@@ -32,14 +45,15 @@ export function generateMetadata({ params }) {
 }
 
 /* ── Page ──────────────────────────────────────────────────────── */
-export default function BlogPostPage({ params }) {
-  const post = POSTS.find((p) => p.slug === params.slug);
+export default async function BlogPostPage({ params }) {
+  const all  = await resolvePosts();
+  const post = all.find((p) => p.slug === params.slug);
   if (!post) notFound();
 
-  // Prev / next navigation
-  const currentIndex = POSTS.findIndex((p) => p.slug === params.slug);
-  const prev = POSTS[currentIndex - 1] ?? null;
-  const next = POSTS[currentIndex + 1] ?? null;
+  // Prev / next navigation within the same source (DB or static)
+  const currentIndex = all.findIndex((p) => p.slug === params.slug);
+  const prev = all[currentIndex - 1] ?? null;
+  const next = all[currentIndex + 1] ?? null;
 
   return (
     <main style={{ backgroundColor: "#0d1b2e" }}>
@@ -97,14 +111,21 @@ export default function BlogPostPage({ params }) {
           {post.excerpt}
         </p>
 
-        {/* Body paragraphs */}
-        <div className="flex flex-col gap-6">
-          {post.body.map((para, i) => (
-            <p key={i} className="text-white/60 leading-[1.85] text-base">
-              {para}
-            </p>
-          ))}
-        </div>
+        {/* Body — rich HTML for DB posts, paragraph array for static posts */}
+        {post.body_html ? (
+          <div
+            className="blog-body"
+            dangerouslySetInnerHTML={{ __html: post.body_html }}
+          />
+        ) : (
+          <div className="flex flex-col gap-6">
+            {post.body.map((para, i) => (
+              <p key={i} className="text-white/60 leading-[1.85] text-base">
+                {para}
+              </p>
+            ))}
+          </div>
+        )}
 
         {/* Divider */}
         <div className="border-t border-white/10 mt-14 mb-10" />
