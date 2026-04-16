@@ -26,18 +26,18 @@ export default function ClientsSection({ block = null }) {
         <div className="mt-3 mx-auto w-12 h-0.5 bg-gray-300 rounded-full" />
       </div>
 
-      <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 items-center justify-items-center">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 sm:gap-8 items-center justify-items-center">
         {clients.map(({ name, src }) => (
           <div
             key={name}
             className="group w-full flex items-center justify-center p-4 sm:p-6 rounded-xl border border-gray-100 bg-gray-50 transition-shadow duration-300 hover:shadow-md"
           >
-            <div className="relative w-28 h-16 sm:w-36 sm:h-20 transition-all duration-300 grayscale group-hover:grayscale-0">
+            <div className="relative w-36 h-24 sm:w-48 sm:h-28 transition-all duration-300">
               <Image
                 src={src}
                 alt={name}
                 fill
-                sizes="(max-width: 640px) 112px, 144px"
+                sizes="(max-width: 640px) 144px, 192px"
                 className="object-contain"
               />
             </div>

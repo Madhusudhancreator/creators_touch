@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -42,7 +43,7 @@ export default function HeroBanner({ block = null }) {
       {/* Desktop background image */}
       <img
         ref={imgRef}
-        src="/assets/images/banner.jpeg"
+        src="/assets/images/banner.png"
         alt="Banner"
         className="hidden md:block absolute inset-0 w-full h-full will-change-transform"
         style={{ transformOrigin: "center center", transition: "transform 0.1s linear" }}
@@ -57,6 +58,43 @@ export default function HeroBanner({ block = null }) {
 
       {/* Dark overlay */}
       {/* <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-black/75" /> */}
+
+      <style>{`
+        @keyframes hero-float {
+          0%   { transform: translateY(0px); }
+          50%  { transform: translateY(-14px); }
+          100% { transform: translateY(0px); }
+        }
+        .hero-float-img {
+          animation: hero-float 3.5s ease-in-out infinite;
+        }
+        .hero-float-img:hover {
+          animation-play-state: paused;
+        }
+        .hero-float-img-delay1 { animation-delay: 0.6s; }
+        .hero-float-img-delay2 { animation-delay: 1.2s; }
+      `}</style>
+
+      {/* Left image */}
+      <img
+        src="/assets/images/one.png"
+        alt="" aria-hidden="true"
+        className="hero-float-img absolute left-0 top-1/2 -translate-y-1/2 w-40 md:w-64 lg:w-96 object-contain z-10"
+      />
+
+      {/* Right image */}
+      <img
+        src="/assets/images/two.png"
+        alt="" aria-hidden="true"
+        className="hero-float-img hero-float-img-delay1 absolute right-0 top-1/2 -translate-y-1/2 w-40 md:w-64 lg:w-96 object-contain z-10"
+      />
+
+      {/* Bottom image */}
+      <img
+        src="/assets/images/three.png"
+        alt="" aria-hidden="true"
+        className="hero-float-img hero-float-img-delay2 absolute -bottom-16 left-1/2 -translate-x-1/2 w-48 md:w-72 lg:w-96 object-contain z-10"
+      />
 
     </section>
   );

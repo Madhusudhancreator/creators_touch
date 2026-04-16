@@ -46,7 +46,7 @@ export default function IndustriesSection({ block = null }) {
   const heading    = data.heading ?? DEFAULT_DATA.heading;
 
   const [hovered, setHovered]   = useState(null);
-  const [imgA, setImgA]         = useState(null);
+  const [imgA, setImgA]         = useState(DEFAULT_DATA.items[0].img);
   const [imgB, setImgB]         = useState(null);
   const [activeSlot, setActive] = useState("a");
   const [panelIn, setPanelIn]   = useState(false);
@@ -111,8 +111,8 @@ export default function IndustriesSection({ block = null }) {
 
       {/* Double-buffer background */}
       <div aria-hidden className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: imgA ? `url('${imgA}')` : "none", opacity: activeSlot === "a" && isActive ? 1 : 0, transition: "opacity 0.55s ease" }} />
-        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: imgB ? `url('${imgB}')` : "none", opacity: activeSlot === "b" && isActive ? 1 : 0, transition: "opacity 0.55s ease" }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: imgA ? `url('${imgA}')` : "none", opacity: activeSlot === "a" ? 1 : 0, transition: "opacity 0.55s ease" }} />
+        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: imgB ? `url('${imgB}')` : "none", opacity: activeSlot === "b" ? 1 : 0, transition: "opacity 0.55s ease" }} />
         <div className="absolute inset-0" style={{ background: "linear-gradient(135deg,rgba(13,27,46,0.84) 0%,rgba(13,27,46,0.68) 100%)", opacity: isActive ? 1 : 0, transition: "opacity 0.55s ease" }} />
       </div>
 

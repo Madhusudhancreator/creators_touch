@@ -8,6 +8,17 @@ const DARK  = "#0d1b2e";
 const ROW_H = 60;
 const NAV_H = 88;
 
+/* Map service titles to background images.
+   Place images at: frontend/public/assets/services/<filename>
+   Recommended size: 1600×900px, JPG or WebP */
+const SERVICE_BG = {
+  "Strategy":       "/assets/services/strategy.png",
+  "Branding":       "/assets/services/branding.png",
+  "Content":        "/assets/services/content.png",
+  "Website Design": "/assets/services/website-design.png",
+  "Development":    "/assets/services/development.png",
+};
+
 const DEFAULT_SERVICES = [
   { number: "01", title: "Strategy",       tag: "Business Planning",     description: "We help you make the right plan for your brand and business growth.",   bullets: ["Research","Competitor Check","Growth Plan"], accent: "pink" },
   { number: "02", title: "Branding",       tag: "Brand Identity",        description: "We create a brand look and style that makes your business stand out.",  bullets: ["Logo","Brand Style","Brand Voice"],          accent: "blue" },
@@ -82,6 +93,8 @@ export default function ServicesSection({ block = null }) {
 
           const pinned = i < activeIdx;
 
+          const bgImage = SERVICE_BG[svc.title];
+
           return (
             <div
               key={svc.number}
@@ -91,14 +104,31 @@ export default function ServicesSection({ block = null }) {
                 zIndex: i + 1, overflow: "hidden",
                 transform: `translateY(${cardTY}px)`,
                 willChange: "height, transform",
-                backgroundColor: "#ffffff",
+                backgroundColor: "#fafafa",
                 borderTop: "1px solid #f1f5f9",
               }}
             >
+              {/* Background image — fills the card, fades in as it expands */}
+              {bgImage && (
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute", inset: 0,
+                    backgroundImage: `url(${bgImage})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    opacity: contentOp * 0.55,
+                    transition: "opacity 0.3s ease",
+                    pointerEvents: "none",
+                    zIndex: 0,
+                  }}
+                />
+              )}
               {/* Title row */}
               <div
                 className="flex items-center justify-between px-6 sm:px-14 lg:px-24"
-                style={{ height: ROW_H, flexShrink: 0 }}
+                style={{ height: ROW_H, flexShrink: 0, position: "relative", zIndex: 2 }}
               >
                 <div className="flex items-center gap-4">
                   <span
@@ -131,7 +161,7 @@ export default function ServicesSection({ block = null }) {
               {/* Expanded content */}
               <div
                 className="flex gap-8 lg:gap-16 px-6 sm:px-14 lg:px-24 pt-2 pb-10"
-                style={{ height: `calc(100% - ${ROW_H}px)`, opacity: contentOp, overflow: "hidden" }}
+                style={{ height: `calc(100% - ${ROW_H}px)`, opacity: contentOp, overflow: "hidden", position: "relative", zIndex: 2 }}
               >
                 {/* Ghost number + progress pills */}
                 <div className="hidden sm:flex flex-col justify-between w-24 lg:w-36 shrink-0 py-4">
