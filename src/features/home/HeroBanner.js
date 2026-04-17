@@ -53,7 +53,7 @@ export default function HeroBanner({ block = null }) {
       <img
         src="/assets/images/bannermobile.png"
         alt="Banner"
-        className="block md:hidden absolute inset-x-0 bottom-0 top-16 w-full object-cover object-top"
+        className="block h-[100vh] md:hidden absolute inset-x-0 bottom-0 top-16 w-full object-cover object-top"
       />
 
       {/* Dark overlay */}
@@ -70,31 +70,51 @@ export default function HeroBanner({ block = null }) {
         }
         .hero-float-img:hover {
           animation-play-state: paused;
+          filter: brightness(1.08) drop-shadow(0 8px 24px rgba(9,119,168,0.25));
+          transition: filter 0.3s ease;
         }
         .hero-float-img-delay1 { animation-delay: 0.6s; }
         .hero-float-img-delay2 { animation-delay: 1.2s; }
       `}</style>
 
-      {/* Left image */}
-      <img
-        src="/assets/images/one.png"
-        alt="" aria-hidden="true"
-        className="hero-float-img absolute left-0 top-1/2 -translate-y-1/2 w-40 md:w-64 lg:w-96 object-contain z-10"
-      />
+      {/* Left image → Web Development */}
+      <Link
+        href="/services/web-development"
+        aria-label={leftLabel.text}
+        className="hero-float-img absolute left-0 top-1/2 -translate-y-1/2 w-40 md:w-64 lg:w-96 z-10 cursor-pointer"
+      >
+        <img
+          src="/assets/images/one.png"
+          alt={leftLabel.text}
+          className="w-full h-full object-contain"
+        />
+      </Link>
 
-      {/* Right image */}
-      <img
-        src="/assets/images/two.png"
-        alt="" aria-hidden="true"
-        className="hero-float-img hero-float-img-delay1 absolute right-0 top-1/2 -translate-y-1/2 w-40 md:w-64 lg:w-96 object-contain z-10"
-      />
+      {/* Right image → Digital Marketing */}
+      <Link
+        href="/services/app-development"
+        aria-label={rightLabel.text}
+        className="hero-float-img hero-float-img-delay1 absolute right-0 top-1/2 -translate-y-1/2 w-40 md:w-64 lg:w-96 z-10 cursor-pointer"
+      >
+        <img
+          src="/assets/images/two.png"
+          alt={rightLabel.text}
+          className="w-full h-full object-contain"
+        />
+      </Link>
 
-      {/* Bottom image */}
-      <img
-        src="/assets/images/three.png"
-        alt="" aria-hidden="true"
-        className="hero-float-img hero-float-img-delay2 absolute -bottom-16 left-1/2 -translate-x-1/2 w-48 md:w-72 lg:w-96 object-contain z-10"
-      />
+      {/* Bottom image → App Development */}
+      <Link
+        href="/services/digital-marketing"
+        aria-label={bottomLabel.text}
+        className="hero-float-img hero-float-img-delay2 absolute -bottom-16 left-1/2 -translate-x-1/2 w-48 md:w-72 lg:w-96 z-10 cursor-pointer"
+      >
+        <img
+          src="/assets/images/three.png"
+          alt={bottomLabel.text}
+          className="w-full h-full object-contain"
+        />
+      </Link>
 
     </section>
   );

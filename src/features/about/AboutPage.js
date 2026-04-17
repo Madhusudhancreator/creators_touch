@@ -982,7 +982,7 @@ export default function AboutPage() {
     <main style={{ backgroundColor: "#ffffff" }}>
 
       <Hero mounted={mounted} />
-      <Ticker />
+      <Ticker />        
       {/* <MissionSection /> */}
       <ValuesSection />
       <StatsSection />

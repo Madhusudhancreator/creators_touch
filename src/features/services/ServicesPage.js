@@ -115,6 +115,7 @@ const CORE = [
       "Growth Plan"
     ],
     accent: BLUE,
+    img: "/assets/services/strategy2.png",
   },
   {
     number: "02",
@@ -129,6 +130,7 @@ const CORE = [
       "Brand Voice"
     ],
     accent: PINK,
+    img: "/assets/services/branding2.png",
   },
   {
     number: "03",
@@ -143,6 +145,7 @@ const CORE = [
       "Fast Performance"
     ],
     accent: BLUE,
+    img: "/assets/services/website-design2.png",
   },
   {
     number: "04",
@@ -157,6 +160,7 @@ const CORE = [
       "Email Marketing"
     ],
     accent: PINK,
+    img: "/assets/services/content2.png",
   },
   {
     number: "05",
@@ -171,6 +175,7 @@ const CORE = [
       "Event Coverage"
     ],
     accent: BLUE,
+    img: "/assets/services/development2.png",
   },
 ];
 
@@ -558,14 +563,32 @@ function StickyServices() {
                 overflow: "hidden",
                 transform: `translateY(${cardTY}px)`,
                 willChange: "height, transform",
-                backgroundColor: "#ffffff",
-                borderTop: `1px solid rgba(0,0,0,0.07)`,
+                backgroundColor: "#fafafa",
+                borderTop: `1px solid #f1f5f9`,
               }}
             >
+              {/* Full-card background image — fades in as card expands */}
+              {svc.img && (
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute", inset: 0,
+                    backgroundImage: `url(${svc.img})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    opacity: contentOp * 0.55,
+                    transition: "opacity 0.3s ease",
+                    pointerEvents: "none",
+                    zIndex: 0,
+                  }}
+                />
+              )}
+
               {/* Title row */}
               <div
                 className="flex items-center justify-between px-6 sm:px-14 lg:px-24"
-                style={{ height: ROW_H }}
+                style={{ height: ROW_H, position: "relative", zIndex: 2 }}
               >
                 <div className="flex items-center gap-4">
                   <span
@@ -606,7 +629,7 @@ function StickyServices() {
               {/* Expanded content */}
               <div
                 className="flex gap-8 lg:gap-20 px-6 sm:px-14 lg:px-24 pt-3 pb-6"
-                style={{ height: `calc(100% - ${ROW_H}px)`, opacity: contentOp, overflow: "hidden" }}
+                style={{ height: `calc(100% - ${ROW_H}px)`, opacity: contentOp, overflow: "hidden", position: "relative", zIndex: 2 }}
               >
                 {/* Left: ghost number + progress dots */}
                 <div className="hidden sm:flex flex-col justify-between w-28 lg:w-44 shrink-0 py-4">
@@ -675,54 +698,6 @@ function StickyServices() {
                   </div>
                 </div>
 
-                {/* Right: decorative geometric */}
-                <div className="hidden lg:flex items-center justify-center w-52 xl:w-64 shrink-0">
-                  <div className="relative w-44 h-44 xl:w-56 xl:h-56">
-                    {/* Outer square */}
-                    <div
-                      className="absolute inset-0 rounded-2xl"
-                      style={{ border: `1px solid ${svc.accent}22` }}
-                    />
-                    {/* Mid square rotated */}
-                    <div
-                      className="absolute inset-6 rounded-xl"
-                      style={{
-                        border: `1px solid ${svc.accent}18`,
-                        transform: "rotate(12deg)",
-                      }}
-                    />
-                    {/* Inner square */}
-                    <div
-                      className="absolute inset-12 rounded-lg"
-                      style={{
-                        border: `1px solid ${svc.accent}28`,
-                        transform: "rotate(24deg)",
-                      }}
-                    />
-                    {/* Center dot */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div
-                        className="w-3 h-3 rounded-full"
-                        style={{
-                          backgroundColor: svc.accent,
-                          boxShadow: `0 0 16px ${svc.accent}`,
-                        }}
-                      />
-                    </div>
-                    {/* Number watermark */}
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                      <span
-                        className="font-extrabold"
-                        style={{
-                          fontSize: "5rem",
-                          color: `${svc.accent}0d`,
-                        }}
-                      >
-                        {svc.number}
-                      </span>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           );
