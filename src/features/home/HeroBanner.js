@@ -107,7 +107,7 @@ export default function HeroBanner({ block = null }) {
       <Link
         href="/services/digital-marketing"
         aria-label={bottomLabel.text}
-        className="hero-float-img hero-float-img-delay2 absolute -bottom-16 left-1/2 -translate-x-1/2 w-48 md:w-72 lg:w-96 z-10 cursor-pointer"
+        className="hero-float-img hero-float-img-delay2 absolute -bottom-0 lg:-bottom-16 md:-bottom-16 left-1/2 -translate-x-1/2 w-48 md:w-72 lg:w-96 z-10 cursor-pointer"
       >
         <img
           src="/assets/images/three.png"
